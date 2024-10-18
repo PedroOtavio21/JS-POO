@@ -13,3 +13,7 @@ class User{
         }
     }
 }
+
+const user = new User('Pedro Otávio de Sousa Bezerra', 'teste@email.com', 1234)
+user.login('opaopa@gmail.com', 1234)
+user.login('teste@email.com', 1234)
