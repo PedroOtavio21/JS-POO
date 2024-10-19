@@ -1,6 +1,8 @@
 class Comment{
-    constructor(user, text){
-        this.user = user;
+    constructor(username, text){
+        this.username = username;
         this.text = text;
     }
 }
+
+module.exports = Comment;
