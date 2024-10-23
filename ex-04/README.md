@@ -20,7 +20,12 @@ Que representa outro tipo de personagem e também herda de Character.Essa classe
 Obs.: Você pode criar um outro arquivo, importar as classes e criar algumas instâncias para testá-las.
 
 ## A fazer:
-[X] Criar classes destinadas ao exercício (Character, Thief, Mago, Warrior e Main)
+[X] Criar classes destinadas ao exercício (Character, Thief, Mage, Warrior e Main)
 [ ] Aplicar atributos e métodos de cada classe, com suas respectivas lógicas
+ - Character 🆗 
+ - Thief
+ - Mage
+ - Warrior
+ - Main
 [ ] Aplicar encapsulamento (atributos privados e métodos públicos) e métodos get e set
 [ ] Aplicar uma interface de execução criativa em classe main (não necessária em exercício)
