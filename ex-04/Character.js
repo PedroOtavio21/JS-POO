@@ -1,9 +1,9 @@
 class Character {
     // Atributos
-    #name;
-    #lifePoints;
-    #attackPoints;
-    #defensePoints;
+    #name = null;
+    #lifePoints = null;
+    #attackPoints = null;
+    #defensePoints = null;
 
     // Métodos
     constructor(name, lifePoints, attackPoints, defensePoints){
@@ -25,6 +25,10 @@ class Character {
         return this.#lifePoints
     }
 
+    setLifePoints(lifePoints){
+        this.#lifePoints = lifePoints
+    }
+
     getAttackPoints(){
         return this.#attackPoints
     }
@@ -34,16 +38,10 @@ class Character {
     }
 
     attackCharacter(Character){
-        // Método auxiliar
-        Character.takeDamage(this)
-
         // Retorno de resultado para avaliação
         const result = Character.getLifePoints() - (this.getAttackPoints() - Character.getDefensePoints())
+        Character.setLifePoints(result)
         return result
-    }
-
-    takeDamage(Character){
-        this.#lifePoints -= Character.getAttackPoints() - this.getDefensePoints() 
     }
 
     toString(){
@@ -53,3 +51,5 @@ class Character {
         Pontos de Defesa: ${this.getDefensePoints()}` 
     }
 }
+
+module.exports = Character

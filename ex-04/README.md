@@ -23,9 +23,10 @@ Obs.: Você pode criar um outro arquivo, importar as classes e criar algumas ins
 [X] Criar classes destinadas ao exercício (Character, Thief, Mage, Warrior e Main)
 [ ] Aplicar atributos e métodos de cada classe, com suas respectivas lógicas
  - Character 🆗 
- - Thief
+ - Thief 🆗
  - Mage
  - Warrior
  - Main
 [ ] Aplicar encapsulamento (atributos privados e métodos públicos) e métodos get e set
+[ ] Aplicar nova lógica de tomada de dano após finalização de exercício
 [ ] Aplicar uma interface de execução criativa em classe main (não necessária em exercício)
