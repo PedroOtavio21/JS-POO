@@ -33,15 +33,30 @@ class Character {
         return this.#attackPoints
     }
 
+    setAttackPoints(attackPoints){
+        this.#attackPoints = attackPoints
+    }
+
     getDefensePoints(){
         return this.#defensePoints
     }
 
+    setDefensePoints(defensePoints){
+        this.#defensePoints = defensePoints
+    }
+
     attackCharacter(Character){
-        // Retorno de resultado para avaliação
-        const result = Character.getLifePoints() - (this.getAttackPoints() - Character.getDefensePoints())
-        Character.setLifePoints(result)
-        return result
+        const damage = this.getAttackPoints() - Character.getDefensePoints()
+        console.log(this.losingHealth(Character, damage))
+    }
+
+    losingHealth(Character, damage){
+        if(damage > 0){
+            Character.#lifePoints -= damage
+            return `O atacante ${this.getName()} causou um total de ${damage} em ${Character.getName()}!`
+        } else {
+            return `O atacante efetivou o ataque, porém não causou dano!`
+        }
     }
 
     toString(){

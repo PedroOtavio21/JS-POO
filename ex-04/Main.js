@@ -1,30 +1,45 @@
 const Character = require('./Character')
 const Thief = require('./Thief')
 const Mage = require('./Mage')
-// const Warrior = require('./Warrior')
+const Warrior = require('./Warrior')
 
-const character = new Character('Pedro', 1200, 800, 750)
-const ladrao = new Thief('Ladrão', 700, 1250, 330)
-const mago = new Mage('Mago', 900, 1000, 560, 200)
+const hero = new Character('Hero', 900, 800, 750)
+const thief = new Thief('Thief', 650, 1400, 300)
+const wizard = new Mage('Wizard', 800, 1100, 500, 300)
+const knight = new Warrior('Knight', 1500, 1200, 800, 200)
 
-console.log(character.toString())
-console.log(ladrao.toString())
-console.log(mago.toString())
+console.log(hero.toString())
+console.log(thief.toString())
+console.log(wizard.toString())
+console.log(knight.toString())
 
-// Battle - Mago X Character
-// Mago -> 1000 + 200 = 1200 atk
-// Character -> 1200 life and 750 def
-// Result -> 1200 - (1200 - 750) = 1200 - 450 = 750
+// Teste guerreiro
+console.log('\n')
+hero.attackCharacter(thief)
+console.log(hero.toString())
+console.log(thief.toString())
 
-const resultado = mago.attackCharacter(character)
-console.log(resultado)
-console.log(character.toString())
 
-// Battle - Ladrao X Mago
-// Ladrao -> 1250 atk
-// Mago -> 900 life and 560 def
-// Result -> 900 - 2(1250 - 560) = 900 - 2 * 690 = 900 - 1380 = - 480
+// Teste Ladrão
+console.log('\n')
 
-const newResult = ladrao.attackCharacter(mago)
-console.log(newResult)
-console.log(mago.toString())
+thief.attackCharacter(hero)
+console.log(thief.toString())
+console.log(hero.toString())
+
+// Teste Mago
+console.log('\n')
+
+wizard.attackCharacter(knight)
+wizard.saveFriend(hero)
+console.log(wizard.toString())
+console.log(knight.toString())
+console.log(hero.toString())
+
+// Teste Cavaleiro
+console.log('\n')
+knight.attackCharacter(thief)
+knight.turnPosition()
+knight.attackCharacter(thief)
+console.log(knight.toString())
+console.log(thief.toString())

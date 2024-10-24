@@ -7,9 +7,8 @@ class Thief extends Character{
 
     // Sobrescrita de método
     attackCharacter(Character){
-        const result = Character.getLifePoints() - 2 * (this.getAttackPoints() - Character.getDefensePoints()) 
-        Character.setLifePoints(result)
-        return result
+        const damage = (this.getAttackPoints() - Character.getDefensePoints()) * 2 
+        console.log(this.losingHealth(Character, damage))
     }
 }
 
