@@ -13,8 +13,8 @@ class Mage extends Character{
     }
 
     attackCharacter(Character){
-        const damage = (this.getMagicPoints() + this.getAttackPoints()) - Character.getDefensePoints()
-        console.log(this.losingHealth(Character, damage))
+        const damage = (this.getMagicPoints() + super.getAttackPoints()) - Character.getDefensePoints()
+        console.log(super.losingHealth(Character, damage))
     }
 
     saveFriend(Character){

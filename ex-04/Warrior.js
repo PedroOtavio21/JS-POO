@@ -23,8 +23,8 @@ class Warrior extends Character{
 
     attackCharacter(Character){
         if(this.getPosition() === 'attack'){
-            const damage = this.getAttackPoints() - Character.getDefensePoints()
-            console.log(this.losingHealth(Character, damage))
+            const damage = super.getAttackPoints() - Character.getDefensePoints()
+            console.log(super.losingHealth(Character, damage))
         } else {
             console.log('Não será possível o guerreiro atacar')
         }
@@ -40,17 +40,21 @@ class Warrior extends Character{
             this.setPosition('defense')
         }
         if(this.getPosition() === null){
-            this.defensePosition()
+            this.attackPosition()
             this.setPosition('defense')
         }
     }
 
     defensePosition(){
-        this.#shieldPoints += this.getDefensePoints()
+        let defPoints = super.getDefensePoints()
+        defPoints += this.getShieldPoints()
+        super.setDefensePoints(defPoints)
     }
 
     attackPosition(){
-        this.#shieldPoints -= this.getDefensePoints()
+        let defPoints = super.getDefensePoints()
+        defPoints -= this.getShieldPoints()
+        super.setDefensePoints(defPoints)
     }
 
     toString(){
