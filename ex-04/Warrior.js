@@ -1,70 +1,52 @@
 const Character = require("./Character");
 
-class Warrior extends Character{
-    #shieldPoints = null
-    #position = null
+module.exports = class Warrior extends Character{
+    #shieldPoints
+    #stance
+
     constructor(name, lifePoints, attackPoints, defensePoints, shieldPoints){
         super(name, lifePoints, attackPoints, defensePoints)
         this.#shieldPoints = shieldPoints
-        this.turnPosition()
+        this.#stance = 'attack'
     }
 
-    getShieldPoints(){
+    get shieldPoints(){
         return this.#shieldPoints
     }
 
-    getPosition(){
-        return this.#position
+    get stance(){
+        return this.#stance
     }
 
-    setPosition(position){
-        this.#position = position
+    set stance(position){
+        this.#stance = position
     }
 
-    attackCharacter(Character){
-        if(this.getPosition() === 'attack'){
-            const damage = super.getAttackPoints() - Character.getDefensePoints()
-            console.log(super.losingHealth(Character, damage))
+    attacking(target){
+        if(this.stance === 'attack'){
+            target -= this.attackPoints - target.defensePoints
         } else {
-            console.log('Não será possível o guerreiro atacar')
+            console.log('Ataque de guerreiro barrado! Mude sua posição de combate.')
         }
     }
 
-    turnPosition(){
-        if(this.getPosition() === 'defense'){
-            this.attackPosition()
-            this.setPosition('attack')
+    switchStance(){
+        if(this.stance === 'attack'){
+            this.stance = 'defense'
+            this.defensePoints += this.shieldPoints
+        } else {
+            this.stance = 'attack'
+            this.defensePoints -= this.shieldPoints
         }
-        if(this.getPosition() === 'attack'){
-            this.defensePosition()
-            this.setPosition('defense')
-        }
-        if(this.getPosition() === null){
-            this.attackPosition()
-            this.setPosition('defense')
-        }
-    }
-
-    defensePosition(){
-        let defPoints = super.getDefensePoints()
-        defPoints += this.getShieldPoints()
-        super.setDefensePoints(defPoints)
-    }
-
-    attackPosition(){
-        let defPoints = super.getDefensePoints()
-        defPoints -= this.getShieldPoints()
-        super.setDefensePoints(defPoints)
     }
 
     toString(){
-        return `Nome: ${this.getName()}; 
-        Pontos de Vida: ${this.getLifePoints()}
-        Pontos de Ataque: ${this.getAttackPoints()}
-        Pontos de Defesa: ${this.getDefensePoints()}
-        Pontos de Escudo: ${this.getShieldPoints()}
-        Posição de Combate: ${this.getPosition()}` 
+        return `
+        Nome: ${this.name}
+        Pontos de Vida: ${this.lifePoints}
+        Pontos de Ataque: ${this.attackPoints}
+        Pontos de Defesa: ${this.defensePoints}
+        Pontos de Escudo: ${this.shieldPoints}
+        Posição de Combate: ${this.stance}`
     }
 }
-
-module.exports = Warrior

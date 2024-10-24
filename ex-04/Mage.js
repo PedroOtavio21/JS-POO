@@ -1,34 +1,31 @@
 const Character = require("./Character");
 
-class Mage extends Character{
-    #magicPoints = null
+module.exports = class Mage extends Character{
+    #magicPoints
     
     constructor(name, lifePoints, attackPoints, defensePoints, magicPoints){
         super(name, lifePoints, attackPoints, defensePoints)
         this.#magicPoints = magicPoints
     }
 
-    getMagicPoints(){
+    get magicPoints(){
         return this.#magicPoints
     }
 
-    attackCharacter(Character){
-        const damage = (this.getMagicPoints() + super.getAttackPoints()) - Character.getDefensePoints()
-        console.log(super.losingHealth(Character, damage))
+    attacking(target){
+        target.lifePoints -= (this.attackPoints + this.magicPoints) - target.defensePoints
     }
 
-    saveFriend(Character){
-        const addedLife = Character.getLifePoints() + 2 * this.getMagicPoints()
-        Character.setLifePoints(addedLife)
+    heal(target){
+        target.lifePoints += this.magicPoints * 2
     }
 
     toString(){
-        return `Nome: ${this.getName()}; 
-        Pontos de Vida: ${this.getLifePoints()}
-        Pontos de Ataque: ${this.getAttackPoints()}
-        Pontos de Defesa: ${this.getDefensePoints()}
-        Pontos de Magia: ${this.getMagicPoints()}` 
+        return `
+        Nome: ${this.name}
+        Pontos de Vida: ${this.lifePoints}
+        Pontos de Ataque: ${this.attackPoints}
+        Pontos de Defesa: ${this.defensePoints}
+        Pontos de Magia: ${this.magicPoints}`
     }
 }
-
-module.exports = Mage

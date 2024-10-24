@@ -1,45 +1,40 @@
-const Character = require('./Character')
-const Thief = require('./Thief')
+const Warrior = require("./Warrior")
 const Mage = require('./Mage')
-const Warrior = require('./Warrior')
+const Thief = require('./Thief')
 
-const hero = new Character('Hero', 900, 800, 750)
-const thief = new Thief('Thief', 650, 1400, 300)
-const wizard = new Mage('Wizard', 800, 1100, 500, 300)
-const knight = new Warrior('Knight', 1500, 1200, 800, 200)
+const pedro = new Warrior('Pedro', 300, 15, 10, 5)
+const ana = new Mage('Ana', 250, 20, 7, 4)
+const eleno = new Thief('Eleno', 150, 18, 3)
 
-console.log(hero.toString())
-console.log(thief.toString())
-console.log(wizard.toString())
-console.log(knight.toString())
+// console.log(pedro.toString())
+// console.log(ana.toString())
+// console.log(eleno.toString())
 
-// Teste guerreiro
-console.log('\n')
-hero.attackCharacter(thief)
-console.log(hero.toString())
-console.log(thief.toString())
+console.log('Informações iniciais\n')
+console.log(pedro.toString())
+console.log(ana.toString())
+console.log(eleno.toString())
 
+pedro.attacking(ana)
 
-// Teste Ladrão
-console.log('\n')
+console.log('Primeiro confronto\n')
+console.log(pedro.toString())
+console.log(ana.toString())
 
-thief.attackCharacter(hero)
-console.log(thief.toString())
-console.log(hero.toString())
+ana.attacking(pedro)
 
-// Teste Mago
-console.log('\n')
+console.log('Segundo confronto\n')
+console.log(pedro.toString())
+console.log(ana.toString())
 
-wizard.attackCharacter(knight)
-wizard.saveFriend(hero)
-console.log(wizard.toString())
-console.log(knight.toString())
-console.log(hero.toString())
+ana.heal(eleno)
 
-// Teste Cavaleiro
-console.log('\n')
-knight.attackCharacter(thief)
-knight.turnPosition()
-knight.attackCharacter(thief)
-console.log(knight.toString())
-console.log(thief.toString())
+console.log('Ana salva eleno\n')
+console.log(ana.toString())
+console.log(eleno.toString())
+
+eleno.attacking(ana)
+
+console.log('Terceiro confronto\n')
+console.log(ana.toString())
+console.log(eleno.toString())
