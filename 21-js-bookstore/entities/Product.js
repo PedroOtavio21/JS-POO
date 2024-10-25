@@ -7,10 +7,12 @@ module.exports = class Product{
         this.inStock = inStock
     }
 
+    // Adiciona um produto ao estoque
     addToStock(quantity){
         this.inStock += quantity
     }
 
+    // Remove um produto do estoque
     removeFromStock(quantity){
         this.inStock -= quantity
     }

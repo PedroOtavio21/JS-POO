@@ -13,6 +13,7 @@ module.exports = class Order{
         });
         this.#items = items
         this.#user = user
+        // Valor total de produtos em estoque
         this.#total = items.reduce((sum, {product, quantity}) => sum + (product.price * quantity), 0)
     }
 
