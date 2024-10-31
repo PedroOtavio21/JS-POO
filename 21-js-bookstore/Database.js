@@ -89,6 +89,6 @@ module.exports = class Database{
         console.table(this.#storage.books)
         console.table(this.#storage.posters)
         console.table(this.#storage.users)
-        console.table(this.#storage.orders.map(o => order.data))
+        console.table(this.#storage.orders.map(order => order.data))
     }
 }
