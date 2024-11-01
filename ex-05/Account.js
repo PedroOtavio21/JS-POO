@@ -58,7 +58,7 @@ module.exports = class Account{
             this.#balance -= transfer.value
             this.transfers.push(transfer)
         } else {
-            console.log(`Não foi possível realizar uma transferência para ${target}`)
+            console.log(`Não foi possível realizar uma transferência para ${transfer}`)
         }
     }
 }
