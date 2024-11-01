@@ -13,12 +13,15 @@ Installments) e armazená-las nesse atributo.
 const Installment = require("./Installment")
 
 module.exports = class Loan{
-  static #fee
+  static #fee = 1.05
 
-  constructor(value){
+  constructor(value, installments){
     this.value = value
-    this.creationDate = new Date()
-    this.installments = calculateInstallments(numberInstallments)
+    this.installments = []
+    for(let i = 1; i <= installments; i++){
+        this.installments.push(new Installment((value * Loan.#fee) / 100), i)
+    }
+    this.createdAte = new Date()
   }
 
   static get fee(){
@@ -26,15 +29,6 @@ module.exports = class Loan{
   }
 
   static set fee(fee){
-    this.#fee = fee
-  }
-
-  calculateInstallments(numberInstallments){
-    const value = this.value / numberInstallments
-    const installments = []
-    for(let i = 0; i < numberInstallments; i++){
-        installments.push(new Installment(value, numberInstallments, 'pendente'))
-    }
-    return installments
+    Loan.#fee = 1 + (fee / 100)
   }
 }

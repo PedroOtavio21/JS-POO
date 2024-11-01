@@ -2,10 +2,10 @@
 // o valor e a data de criação.
 
 module.exports = class Transfer{
-    constructor(userTransfer, userRecive, value){
-        this.userTransfer = userTransfer
-        this.userRecive = userRecive
-        this.value = value
-        this.creationDate = new Date()
+    constructor(fromUser, toUser, value){
+        this.fromUser = fromUser
+        this.toUser = toUser
+        this.value = value 
+        this.createdAt = new Date()
     }
 }
