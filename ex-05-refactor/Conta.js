@@ -2,16 +2,16 @@ const Emprestimo = require("./Emprestimo")
 
 module.exports = class Conta{
     #saldo
-    #depositos 
-    #emprestimos
-    #transferencias 
-    administrador
+    // #depositos 
+    // #emprestimos
+    // #transferencias 
+    // administrador
 
     constructor(administrador){
         this.#saldo = 0
-        this.#depositos = []
-        this.#emprestimos = []
-        this.#transferencias = []
+        this.depositos = []
+        this.emprestimos = []
+        this.transferencias = []
         this.administrador = administrador
     }
 
@@ -21,21 +21,21 @@ module.exports = class Conta{
 
     novoDeposito(deposito){
         this.#saldo += deposito.valor
-        this.#depositos.push(deposito)
+        this.depositos.push(deposito)
     }
 
     novoEmprestimo(emprestimo){
         this.#saldo += emprestimo.valor
-        this.#emprestimos.push(emprestimo)
+        this.emprestimos.push(emprestimo)
     }
 
     novaTransferencia(transferencia){
         if(transferencia.usuarioDestino === this.administrador.email){
             this.#saldo += transferencia.valor
-            this.#transferencias.push(transferencia)
+            this.transferencias.push(transferencia)
         } else if (transferencia.usuarioInicial === this.administrador.email){
             this.#saldo -= transferencia.valor
-            this.#transferencias.push(transferencia)
+            this.transferencias.push(transferencia)
         } else {
             console.log(`Não foi possível realizar uma transferência para ${transferencia}`)        }
     }

@@ -5,8 +5,8 @@ module.exports = class Emprestimo{
 
     constructor(valor, numeroDeParcelas){
         this.valor = valor
-        this.parcelas = calcularParcelas(numeroDeParcelas)
         this.dataDeCriacao = new Date()
+        this.parcelas = this.calcularParcelas(numeroDeParcelas)
     }
 
     static get taxa(){
